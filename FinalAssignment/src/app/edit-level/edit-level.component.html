@@ -1,0 +1,38 @@
+<app-admin-home></app-admin-home>
+<div class="container">
+  <form [formGroup]="levelform" novalidate>
+    <select class="form-control" formControlName="levelId" required>
+      <option value="">Please select a Level</option>
+      <option *ngFor="let m of editLevel" [value]="m.levelId">
+        {{m.levelName}}
+      </option>
+    </select>
+
+    <button (click)=getLevel()>Get Data</button>
+    <div *ngIf="check" class="container">
+      <form [formGroup]="updateform" novalidate>
+        <div>
+          <label>level Name</label>
+          <input type="text" class="form-control" value={{levelInfo.levelName}} formControlName="levelName" />
+        </div>
+
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" class="form-control" value="{{levelInfo.levelDesc}}" formControlName="levelDesc" />
+        </div>
+
+        <div class="form-group">
+          <label>Qualification points</label>
+          <input type="number" step="1" pattern="\d+" value="{{levelInfo.qualifyPoints}}"
+            formControlName="qualifyPoints" />
+        </div>
+
+        <div>
+          <button (click)="update()">Update</button>
+        </div>
+      </form>
+    </div>
+
+  </form>
+
+</div>

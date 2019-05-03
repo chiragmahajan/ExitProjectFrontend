@@ -1,0 +1,57 @@
+<app-admin-home></app-admin-home>
+<div class="col-lg-2">
+    <div class="form-group">
+    <label for="exampleSelect1">Filter By Name</label>
+    <input type="text" name="name" (change)="filterByName($event.target.value)" placeholder="Name" class="form-control" id="name" aria-describedby="emailHelp" >
+    </div>
+    </div> 
+    <div class="col-lg-2">
+      <button (click)=clearfilter()>Clear Filter</button>
+    </div>  
+
+<div class="container">
+  <table class="table table-bordered table-inverse">
+    <tr>
+      <th>Applicant Name</th>
+      <th>Contact No</th>
+      <th>Email</th>
+      <th>Level</th>
+      <th>Batch</th>
+      <th>Nagp Status</th>
+      <th>Total Points</th>
+      <th>View Activities</th>
+
+    </tr>
+    <tr *ngFor="let bike of filteredApplicants | paginate: { itemsPerPage: 3, currentPage: p } ">
+      <td>
+        {{bike.name}}
+      </td>
+      <td>
+        {{bike.contactNumber}}
+      </td>
+      <td>
+        {{bike.email}}
+      </td>
+      <td>
+        {{bike.level.levelId}}
+      </td>
+      <td>
+        {{bike.batch.batchId}}
+      </td>
+      <td>
+        {{bike.nagpStatus}}
+      </td>
+     
+      <td>
+        <button (click)="getScore($event.target.id)" id="{{bike.applicantId}}">Points</button>
+        <div *ngIf="checked && clickedId==bike.applicantId">
+          <label>{{pts}}</label>
+        </div>
+      </td>
+      <td>
+        <button (click)= "viewActivities($event.target.id)" id="{{bike.applicantId}}">Activities</button>
+      </td>
+    </tr>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls> 
+</div>

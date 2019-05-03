@@ -1,0 +1,23 @@
+<div class="row h1 justify-content-center">
+  Applicant Login
+</div>
+<div class="container" style="margin-left:27.5%;margin-top:2%;width:45%;border:1px">
+<form [formGroup]="applicantform" (ngSubmit)="submitRegistration()" novalidate>
+<div *ngIf="validMessage != ''">
+<h3 class="has-info">{{validMessage}}</h3>
+</div>
+<div class="form-group">
+<div class="h4">Email</div>
+<input type="email" class="form-control" formControlName="email" required autofocus/>
+</div>
+<div class="form-group">
+<div class="h4">Password</div>
+<input type="password" class="form-control" formControlName="password" required/>
+</div>
+<div class="row justify-content-center">
+    <button type="submit" class="btn btn-primary" >Submit</button>
+</div>
+
+</form>
+</div> 
+ 
