@@ -1,10 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-     
-    
+<!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-              <a class="nav-link" routerLink='/applicanthome'> Applicant Home <span class="sr-only">(current)</span></a>
+              <a class="nav-link" routerLink='/applicanthome/applicantprofile'> Applicant Home <span class="sr-only">(current)</span></a>
             </li>
             <div class="dropdown">
                 <li class="dropbtn">Activities <i class="fa fa-caret-down"></i> </li>
@@ -29,4 +28,23 @@
       </ul>
     </div>
 </nav>
+ -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+  crossorigin="anonymous">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+
+<div class="w3-sidebar w3-black w3-bar-block w3-border w3-card " style="width:12.5%">
+  <h3 class="w3-bar-item " style="color:rgb(1, 1, 175)">Menu</h3>
+  <a class="w3-button w3-block nav-link w3-hover-none w3-hover-text-blue w3-left-align" routerLink='/applicanthome/applicantprofile'> Applicant Home <span class="sr-only">(current)</span></a>
+
+  <button onclick="myFunction('Demo1')" class="w3-button  w3-hover-none w3-hover-text-blue w3-block w3-black w3-left-align ">Activities</button>
+  <div id="Demo1" class="w3-hide w3-indigo">
+    <a class="nav-link w3-hover-none w3-hover-text-black" routerLink='/applicanthome/applicantactivities'> My Activities <span class="sr-only">(current)</span></a>
+    <a class="nav-link w3-hover-none w3-hover-text-black" routerLink='/applicanthome/applicanthistory'>  My History <span class="sr-only">(current)</span></a>
+  </div>
+
+  <a class="w3-button w3-block nav-link w3-hover-none w3-hover-text-blue w3-left-align" routerLink='/applicanthome/editapplicant'>Edit Applicant</a>
+  <a class="w3-button w3-block nav-link w3-hover-none w3-hover-text-blue w3-left-align" routerLink='/logout'>Logout</a>
+</div>

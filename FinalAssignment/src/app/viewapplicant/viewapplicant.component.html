@@ -1,16 +1,32 @@
 <app-admin-home></app-admin-home>
-<div class="col-lg-2">
-    <div class="form-group">
+<select (change)="filterByLevel($event.target.value)" class="form-control" id="level"style="margin-left:13%" >
+  <option value="def">Select Level</option>
+  <option *ngFor="let abc of levels" value="{{abc.levelId}}">{{ abc.levelName}}</option>
+  </select> 
+    
+<br><br>
+
+<select (change)="filterByBatch($event.target.value)" class="form-control" id="batch" style="margin-left:13%">
+  <option value="pok">Select Batch</option>
+  <option *ngFor="let abc of batches" value="{{abc.batchId}}">{{ abc.technology}} {{abc.year}}</option>
+</select> 
+<br><br>
+<div class="container" style="width:75%;margin-top:2%">
+    <div class="row h2 justify-content-center"  >View Applicant</div>
+</div>
+
+<div class="col-lg-2" style="margin-left:13%">
+    <div class="form-group" >
     <label for="exampleSelect1">Filter By Name</label>
     <input type="text" name="name" (change)="filterByName($event.target.value)" placeholder="Name" class="form-control" id="name" aria-describedby="emailHelp" >
     </div>
     </div> 
-    <div class="col-lg-2">
+    <div class="col-lg-2" style="margin-left:13%">
       <button (click)=clearfilter()>Clear Filter</button>
     </div>  
 
-<div class="container">
-  <table class="table table-bordered table-inverse">
+<div class="container" style="width:75%;margin-top:2%">
+  <!-- <table class="table table-bordered table-inverse">
     <tr>
       <th>Applicant Name</th>
       <th>Contact No</th>
@@ -52,6 +68,27 @@
         <button (click)= "viewActivities($event.target.id)" id="{{bike.applicantId}}">Activities</button>
       </td>
     </tr>
-  </table>
+  </table> -->
+  <div class="card-group" *ngFor="let bike of filteredApplicants | paginate: { itemsPerPage: 3, currentPage: p }">
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Applicant Name-  {{bike.name}}</h5>
+            <p class="card-text">Contact No -   {{bike.contactNumber}}</p>
+            <p class="card-text">Email -  {{bike.email}}</p>
+            <p class="card-text">Level -  {{bike.level.levelName}}</p>
+            <p class="card-text">Batch -   {{bike.batch.technology}}{{bike.batch.year}}</p>
+            <p class="card-text">Status - {{bike.nagpStatus}}</p>
+            <!-- <p class="card-text">Total Points -  -->
+                <button (click)="getScore($event.target.id)" id="{{bike.applicantId}}">Points</button>
+                <div *ngIf="checked && clickedId==bike.applicantId">
+                  <label>{{pts}}</label>
+                </div>
+            <!-- </p> -->
+            <!-- <p class="card-text">View Activities -  -->
+                <button (click)= "viewActivities($event.target.id)" id="{{bike.applicantId}}">Activities</button>
+            <!-- </p> -->
+          </div>
+     </div>
+  </div> 
   <pagination-controls (pageChange)="p = $event"></pagination-controls> 
 </div>

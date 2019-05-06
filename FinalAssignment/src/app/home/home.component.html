@@ -1,4 +1,9 @@
-<div class="container">
+<app-start></app-start>
+<div class="row h1 justify-content-center">
+    Admin Login
+  </div>
+
+<div class="container" style="margin-left:27.5%;margin-top:2%;width:45%;border:1px" >
   <form [formGroup]="adminform" (ngSubmit)="submitRegistration()" novalidate>
     <div *ngIf="validMessage != ''">
       <h3 class="has-info">{{validMessage}}</h3>
@@ -11,7 +16,9 @@
       <label>Password</label>
       <input type="password" class="form-control" formControlName="password" required/>
     </div>
-
-    <button type="submit" class="btn btn-primary" >Submit</button>
+    <div class="row justify-content-center">
+        <button type="submit" class="btn btn-primary" >Submit</button>
+    </div>
+    
   </form>
 </div>

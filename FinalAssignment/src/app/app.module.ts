@@ -30,6 +30,8 @@ import { PerformActivityComponent } from './perform-activity/perform-activity.co
 import { ApplicantRecordListComponent } from './applicant-record-list/applicant-record-list.component';
 import { AdminlogoutComponent } from './adminlogout/adminlogout.component';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { AdminprofileComponent } from './adminprofile/adminprofile.component';
+import { ApplicantprofileComponent } from './applicantprofile/applicantprofile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -57,6 +59,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
     PerformActivityComponent,
     ApplicantRecordListComponent,
     AdminlogoutComponent,
+    AdminprofileComponent,
+    ApplicantprofileComponent,
   ],
   imports: [
     BrowserModule,

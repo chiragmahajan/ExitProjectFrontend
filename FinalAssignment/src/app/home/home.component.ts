@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
         }
         else{
          // this.validMessage = "Found"
-         this.router.navigateByUrl('adminhome')
+         this.router.navigateByUrl('adminhome/adminprofile')
          
         }
           return true;

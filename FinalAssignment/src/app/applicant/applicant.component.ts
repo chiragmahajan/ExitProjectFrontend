@@ -58,7 +58,7 @@ export class ApplicantComponent implements OnInit {
   }
   submitRegistration(){
     if(this.applicantform.valid){
-      this.validMessage = " Submitted Successfully"
+      this.validMessage = " Submitted Successfully And Email has been sent"
       var batchid=this.applicantform.controls['batchId'].value;
       var levelid=this.applicantform.controls['levelId'].value;
       var newOb=

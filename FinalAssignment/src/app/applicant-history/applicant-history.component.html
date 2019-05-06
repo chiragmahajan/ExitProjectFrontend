@@ -1,6 +1,12 @@
 <app-applicant-home></app-applicant-home>
-<div class="container">
-  <table class="table table-bordered table-inverse">
+<div class="container" style="width:75%;margin-top:2%">
+    <div class="row h2 justify-content-center"  >Applicant History</div>
+    <h3>Level Qualification points -{{AAR["0"].applicantDetails.level.qualifyPoints}}</h3>
+    <h3> Points Earned-  {{sum}}</h3>
+    <h3> Remaining Points - {{AAR["0"].applicantDetails.level.qualifyPoints-sum}}</h3>
+</div>
+<div class="container" style="margin-left:13%">
+  <!-- <table class="table table-bordered table-inverse">
     <tr>
       <th>Activity Name</th>
       <th>Description</th>
@@ -48,5 +54,40 @@
       </ng-template> 
       </td>
     </tr>
-  </table>
+  </table> -->
+  <div class="card-group" *ngFor="let bike of AAR | paginate: { itemsPerPage: 3, currentPage: p }">
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Activity Name-  {{bike.activity.name}}</h5>
+            <p class="card-text">Description -  {{bike.description}}</p>
+            <p class="card-text">Points -    {{bike.pointsEarned}}</p>
+            <p class="card-text">Remaining Attempt -  {{bike.activity.maxAttempts-bike.count }}</p>
+            <!-- <p class="card-text">Status -  -->
+                <div *ngIf="bike.activity.maxAttempts-bike.count==0; else checkStatus ">
+                    <label>Exceeded Maximum Attempts</label>
+                </div>
+               <ng-template #checkStatus>
+                 <div *ngIf="bike.status == 'REVIEW_PENDING'">
+                     <label for="">REVIEW_PENDING</label>
+                 </div>
+                <div *ngIf="bike.status != 'COMPLETED' && bike.status != 'REVIEW_PENDING'">
+                  <form [formGroup]="updateStatusForm" novalidate> 
+                  <select class="form-control" formControlName="status" required>
+                    <option value="bike.status">Current Status :{{bike.status}}</option>
+                    <option *ngFor="let m of Status" [value]="m">
+                      {{m}}
+                    </option>
+                  </select>
+                 <button (click)= "updateStatus($event.target.id)" id="{{bike.recordId}}">Update Status</button>
+                </form>
+                </div>
+                <div *ngIf="bike.status == 'COMPLETED'">
+                    <label for="">COMPLETED</label>
+                </div>
+              </ng-template> 
+            <!-- </p> -->
+          </div>
+     </div>
+  </div>      
+  <pagination-controls (pageChange)="p = $event"></pagination-controls> 
 </div>

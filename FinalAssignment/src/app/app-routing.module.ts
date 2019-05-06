@@ -24,11 +24,21 @@ import { LogoutComponent } from './logout/logout.component';
 import { PerformActivityComponent } from './perform-activity/perform-activity.component';
 import { ApplicantRecordListComponent } from './applicant-record-list/applicant-record-list.component';
 import { AdminlogoutComponent } from "src/app/adminlogout/adminlogout.component";
+import { AdminprofileComponent } from "src/app/adminprofile/adminprofile.component";
+import { ApplicantprofileComponent } from "src/app/applicantprofile/applicantprofile.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'nothing',
     component: StartComponent
+  },
+  {
+    path: 'adminhome/adminprofile',
+    component: AdminprofileComponent
+  },
+  {
+    path: 'applicanthome/applicantprofile',
+    component: ApplicantprofileComponent
   },
   {
     path: 'adminhome/viewapplicant',
@@ -61,10 +71,10 @@ const routes: Routes = [
   },
   {
      path:"adminhome",
-     component: AdminHomeComponent
+     component: AdminHomeComponent, 
   },
   {
-     path: "adminlogin",
+     path: "",
      component: HomeComponent
   },
   {

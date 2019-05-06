@@ -1,19 +1,21 @@
 <app-admin-home></app-admin-home>
-<select (change)="filterByLevel($event.target.value)" class="form-control" id="level" >
+<select (change)="filterByLevel($event.target.value)" class="form-control" id="level"style="margin-left:13%" >
   <option value="def">Select Level</option>
   <option *ngFor="let abc of levels" value="{{abc.levelId}}">{{ abc.levelName}}</option>
   </select> 
     
 <br><br>
 
-<select (change)="filterByBatch($event.target.value)" class="form-control" id="batch" >
+<select (change)="filterByBatch($event.target.value)" class="form-control" id="batch" style="margin-left:13%">
   <option value="pok">Select Batch</option>
   <option *ngFor="let abc of batches" value="{{abc.batchId}}">{{ abc.technology}} {{abc.year}}</option>
 </select> 
 <br><br>
-
-<div class="container">
-    <table class="table table-bordered table-inverse">
+<div class="container" style="width:75%;margin-top:2%">
+    <div class="row h2 justify-content-center"  >View Activity</div>
+</div>
+<div class="container" style="width:75%;margin-top:2%">
+    <!-- <table class="table table-bordered table-inverse">
       <tr>
         <th>Activity Name</th>
         <th>Description</th>
@@ -21,8 +23,8 @@
         <th>Qualification Points</th>
         <th>Level Name</th>
         <th>Batch </th>
-      </tr>
-      <tr *ngFor="let bike of filteredApplicants | paginate: { itemsPerPage: 3, currentPage: p }">
+      </tr> -->
+      <!-- <tr *ngFor="let bike of filteredApplicants | paginate: { itemsPerPage: 3, currentPage: p }">
         <td>
           {{bike.name}}
         </td>
@@ -41,10 +43,25 @@
          <td>
               {{bike.batch.technology}}{{bike.batch.year}}
         </td>
-      </tr>
-    </table>
-    <pagination-controls (pageChange)="p = $event"></pagination-controls> 
+      </tr> -->
+      <!-- -------------------------------- -->
+      <div class="card-group" *ngFor="let bike of filteredApplicants | paginate: { itemsPerPage: 3, currentPage: p }">
+          <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Activity Name - {{bike.name}}</h5>
+                <p class="card-text">Description -  {{bike.description}}</p>
+                <p class="card-text">Max Attempts - {{bike.maxAttempts}}</p>
+                <p class="card-text">Qualification Points - {{bike.qualifyPoints}}</p>
+                <p class="card-text">Level Name -  {{bike.level.levelName}}</p>
+                <p class="card-text">Batch - {{bike.batch.technology}}{{bike.batch.year}}</p>
+              </div>
+      </div>          
+       <!-- -------------------------------- -->
+    <!-- </table> -->
+   
   </div>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls> 
+</div>
   
 
 

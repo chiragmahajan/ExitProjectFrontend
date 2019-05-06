@@ -14,8 +14,11 @@ export class ViewapplicantComponent implements OnInit {
   public scoreArray:number[];
   checked:boolean = false
   pts:number
+  noElements :boolean;
   filteredApplicants=[];
   clickedId: number
+  public levels;
+  public batches;
   constructor(private service: NagpServiceService,private router: Router,private sharedService:SharedService) { }
 
   ngOnInit() {
@@ -34,6 +37,12 @@ export class ViewapplicantComponent implements OnInit {
       ()=>console.log("Applicant loaded")
 
     );
+    this.service.getLevel().subscribe((data)=>{
+      this.levels = data;
+    })
+    this.service.getBatch().subscribe((data)=>{
+      this.batches=data;
+    })
   }
 
   getScore(applicantid:number){
@@ -60,6 +69,41 @@ export class ViewapplicantComponent implements OnInit {
     });
   
     }
+
+    filterByLevel(value:string) {
+      if(value=="def"){
+  
+      }
+      else{
+      this.noElements = false;
+      this.filteredApplicants = [];
+      let i=0;
+      this.applicant.forEach(element => {
+        
+      if(element.level.levelId === value){
+      this.filteredApplicants[i]=element;
+      i++;
+      }
+      });
+      } 
+    }
+    filterByBatch(value:string) {
+      this.filteredApplicants = [];
+      if(value == "pok"){
+        this.filteredApplicants=this.applicant;
+      }
+      else{
+        let i=0;
+        this.applicant.forEach(element => {
+        if(element.batch.batchId=== value){
+        this.filteredApplicants[i]=element;
+        i++;
+        }
+        });
+        } 
+      }
+      
+  
     
     clearfilter(){
       this.filteredApplicants=this.applicant

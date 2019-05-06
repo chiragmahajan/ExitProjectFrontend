@@ -1,34 +1,53 @@
 <app-admin-home></app-admin-home>
-<div class="container">
-    <form [formGroup]="batchform"  novalidate>
-    <select class="form-control"   formControlName="batchId" required>
+<div class="container" style="width:75%;margin-top:2%">
+    <div class="row h2 justify-content-center"  >Edit Batch</div>
+</div>
+<div class="container" style="width:75%;margin-top:2%">
+  <form [formGroup]="batchform" novalidate>
+    <select class="form-control" formControlName="batchId" required>
         <option value="">Please select a Batch</option>
         <option *ngFor="let m of editBatch" [value]="m.batchId">
                 {{m.technology}}{{space}}{{m.year}}
         </option>
       </select>
-    <button (click) = getBatch()>Get Data</button>
-    <div *ngIf="check" class="container">
+    <button (click)=getBatch()>Get Data</button>
+    <div *ngIf="check" class="container" style="width:80%; margin-top:2%;">
         <form [formGroup]="updateform" novalidate>
-            <div>
-              <label>Technology</label>
-              <input type="text" class="form-control" value={{batchInfo.technology}} formControlName="technology"/>
+
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Technology</span>
             </div>
-    
-            <div class="form-group">
-              <label>Description</label>
-              <input type="text" class="form-control" value="{{batchInfo.batchDescription}}" formControlName="batchDescription" />
+            <input type="text" class="form-control" value={{batchInfo.technology}} formControlName="technology" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm" />
+            <!-- <input type="text" class="form-control" > -->
+          </div>
+
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Description</span>
             </div>
-    
-            <div class="form-group">
-              <label> Year</label>
-              <input type="text"  value="{{batchInfo.year}}"  formControlName="year"/>
+            <input type="text" class="form-control" value="{{batchInfo.batchDescription}}" formControlName="batchDescription" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm" />
+            <!-- <input type="text" class="form-control" > -->
+          </div>
+
+          <div class="input-group input-group-sm mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-sm">Year</span>
             </div>
-    
-            <div>
-              <button (click)="update()">Update</button>
-            </div>
-          </form>
+            <input type="text" class="form-control" value="{{batchInfo.year}}" formControlName="year" aria-label="Sizing example input"
+              aria-describedby="inputGroup-sizing-sm" />
+            <!-- <input type="text" class="form-control" > -->
+          </div>
+
+
+
+          <div class="row justify-content-center">
+            <button (click)="update()">Update</button>
+          </div>
+        </form>
+
     </div>
-    </form>
-  </div>
+  </form>
+</div>

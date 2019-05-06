@@ -1,5 +1,9 @@
 <app-admin-home></app-admin-home>
-<div class="container">
+<div class="container" style="width:75%;margin-top:2%">
+    <div class="row h2 justify-content-center"  >Add A Batch</div>
+</div>
+
+<div class="container" style="width:75%;margin-top:2%">
     <form [formGroup]="batchform" (ngSubmit)="submitRegistration()" novalidate>
       <div *ngIf="validMessage != ''">
         <h3 class="has-info">{{validMessage}}</h3>
@@ -30,7 +34,10 @@
        <label>Start Date</label>
         <input type="text" class="form-control" placeholder="dd/MM/yyyy" formControlName="startDate" required autofocus/>
       </div>
-      <button type="submit" class="btn btn-primary" >Submit</button>
+      <div class="row justify-content-center">
+          <button type="submit" class="btn btn-primary" >Submit</button>
+      </div>
+      
     </form>
   </div>
   <router-outlet></router-outlet>

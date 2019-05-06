@@ -1,5 +1,8 @@
 <app-applicant-home></app-applicant-home>
-<div *ngIf="check==true">
+<div class="container" style="width:75%;margin-top:2%">
+    <div class="row h2 justify-content-center"  >Edit Applicant</div>
+</div>
+<div *ngIf="check==true" style="margin-left:13%">
   <div class="container">
     <form [formGroup]="applicantEditform" novalidate>
         <div *ngIf="validateMessage != ''">

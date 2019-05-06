@@ -40,7 +40,7 @@ export class ApplicantLoginComponent implements OnInit {
     }
     else{
     this.validMessage = "Found"
-    this.router.navigateByUrl('applicanthome')
+    this.router.navigateByUrl('applicanthome/applicantprofile')
     }
     return true;
     },

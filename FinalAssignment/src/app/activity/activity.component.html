@@ -1,5 +1,8 @@
 <app-admin-home></app-admin-home>
-<div class="container">
+<div class="container" style="margin-left:13%">
+    <div class="row h2 justify-content-center"  >Add an activity</div>
+</div>
+<div class="container" style="margin-left:13%">
   <form [formGroup]="activityform" (ngSubmit)="submitRegistration()" novalidate>
     <div *ngIf="validMessage != ''">
       <h3 class="has-info">{{validMessage}}</h3>

@@ -1,0 +1,16 @@
+<app-applicant-home></app-applicant-home>
+<div class="container" style="width:75%;margin-top:2%">
+    <div class="row h2 justify-content-center"  >Applicant Profile</div>
+</div>
+<div class="card-group" style="margin-left:13%">
+        <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Name-  {{applicantprofile.name}}</h5>
+              <p class="card-text">Email -  {{applicantprofile.email}}</p>
+              <p class="card-text">Contact -  {{applicantprofile.contactNumber}}</p>
+              <p class="card-text">Batch -  {{applicantprofile.batch.technology}}{{applicantprofile.batch.year}}</p>
+              <p class="card-text">Level -  {{applicantprofile.level.levelName}}</p>
+              <p class="card-text">Status -  {{applicantprofile.nagpStatus}}</p>
+            </div>
+       </div>
+</div>  

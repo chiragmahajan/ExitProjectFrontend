@@ -9,7 +9,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   styleUrls: ['./applicant-history.component.css']
 })
 export class ApplicantHistoryComponent implements OnInit,OnChanges {
- 
+  public sum:number=0 
   public updateStatusForm;
   public applicantId: number;
   public butDisabled:boolean=true;
@@ -37,7 +37,10 @@ export class ApplicantHistoryComponent implements OnInit,OnChanges {
   getData(){
     this.service.getActivityRecordByApplicantId(this.applicantId).subscribe((data)=>{
       this.AAR=data;
-      
+      console.log(data)
+      for(var i=0;i<data.length;i++){
+        this.sum = this.sum + data[i].pointsEarned
+      }
     })
 
   }

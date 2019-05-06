@@ -1,6 +1,9 @@
 <app-admin-home></app-admin-home>
-<div class="container">
-  <table class="table table-bordered table-inverse">
+<div class="container" style="width:75%;margin-top:2%">
+    <div class="row h2 justify-content-center"  >View Batch</div>
+</div>
+<div class="container" style="margin-left:13%">
+  <!-- <table class="table table-bordered table-inverse">
     <tr>
       <th>Technology</th>
       <th>Description</th>
@@ -22,6 +25,17 @@
       </td>
 
     </tr>
-  </table>
+  </table> -->
+
+  <div class="card-group" *ngFor="let bike of batch | paginate: { itemsPerPage: 3, currentPage: p }">
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Technology - {{bike.technology}}</h5>
+            <p class="card-text">Description -  {{bike.batchDescription}}</p>
+            <p class="card-text">Start Date -  {{bike.startDate}}</p>
+            <p class="card-text">Year - {{bike.year}}</p>
+          </div>
+     </div>
+  </div>      
   <pagination-controls (pageChange)="p = $event"></pagination-controls> 
 </div>

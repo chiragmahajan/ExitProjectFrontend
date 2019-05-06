@@ -1,6 +1,9 @@
 <app-applicant-home></app-applicant-home>
-<div class="container">
-  <table class="table table-bordered table-inverse">
+<div class="container" style="width:75%;margin-top:2%">
+    <div class="row h2 justify-content-center"  >Applicant Activities</div>
+</div>
+<div class="container" style="margin-left:13%">
+  <!-- <table class="table table-bordered table-inverse">
     <tr>
       <th>Activity Name</th>
       <th>Description</th>
@@ -27,5 +30,20 @@
       </td>
 
     </tr>
-  </table>
+  </table> -->
+  <div class="card-group" *ngFor="let bike of activity | paginate: { itemsPerPage: 3, currentPage: p }">
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Activity Name-  {{bike.name}}</h5>
+            <p class="card-text">Description -  {{bike.description}}</p>
+            <p class="card-text">Max Attempts -  {{bike.maxAttempts}}</p>
+            <p class="card-text">Qualification Points -  {{bike.qualifyPoints}}</p>
+            <p class="card-text">
+              Enroll -
+              <button (click) = "checkActivityAvailability($event.target.id)" id="{{bike.activityId}}">Add Activity</button>
+            </p>
+          </div>
+     </div>
+  </div>  
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>     
 </div>
